@@ -16,8 +16,9 @@
 		font-size: 1rem;
 		padding: 0.75rem 1.5rem;
 		border: none;
-		border-radius: 0.125rem;
-		box-shadow: 0.125rem 0.125rem 0.25rem;
+		border-radius: 0.25rem;
+		box-shadow: 0.125rem 0.125rem 0.125rem hsla(0, 0%, 50%, 1);
+		width: max-content;
 	}
 	.primary {
 		background-color: var(--primary);
@@ -30,6 +31,10 @@
 	}
 	button:active {
 		filter: brightness(110%);
-		box-shadow: 0rem 0rem 0rem;
+		box-shadow: none;
+	}
+
+	button[type='submit'] {
+		align-self: end;
 	}
 </style>

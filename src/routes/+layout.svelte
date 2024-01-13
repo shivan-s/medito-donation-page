@@ -35,8 +35,8 @@
 	:global(:root) {
 		--primary-text: hsla(240, 17%, 8%, 1); /* #111118 */
 		--primary-background: hsla(0, 0%, 100%, 1);
-		--primary: hsla(145, 45%, 62%, 1); /* #72CA97 */
-		--danger: hsla(4, 44%, 979%, 1) /* #C97771 */;
+		--primary: hsla(145, 45%, 62%, 1) /* #72CA97 */;
+		--danger: hsla(4, 44%, 79%, 1) /* #C97771 */;
 	}
 	:global(*) {
 		line-height: 1;
