@@ -1,31 +1,25 @@
 <script lang="ts">
 	export let label: string;
-	export let error: string[] | undefined;
+	export let value: string | number;
 </script>
 
 <label>
 	<span>{label}</span>
-	<input {...$$restProps} />
-	{#if error}
-		<div class="error">{error}</div>
-	{/if}
+	<select bind:value {...$$restProps}><slot /></select>
 </label>
 
 <style>
-	input {
+	select {
 		line-height: 1.5;
 		font-size: 1.125rem;
 		padding: 0.25rem 0.5rem;
 		outline: none;
 		border-radius: 0.25rem;
 		border: 1px solid hsla(0, 0%, 50%, 1);
+		background-color: inherit;
 	}
 
-	input:user-invalid {
-		outline: 2px solid var(--danger);
-	}
-
-	input:focus {
+	select:focus {
 		outline: 2px solid var(--primary);
 	}
 
@@ -33,8 +27,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
-	}
-	.error {
-		color: var(--danger);
 	}
 </style>

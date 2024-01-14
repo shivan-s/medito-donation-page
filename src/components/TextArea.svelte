@@ -2,7 +2,7 @@
 	export let label: string;
 	export let name: string;
 	export let value: string;
-	export let error: string | null;
+	export let error: string[] | undefined;
 </script>
 
 <label>

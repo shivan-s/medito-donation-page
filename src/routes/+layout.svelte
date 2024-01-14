@@ -22,6 +22,7 @@
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
 		rel="stylesheet"
 	/>
+	<script src="https://js.stripe.com/v3/"></script>
 </svelte:head>
 <header />
 {#key data.routeURL}
@@ -65,6 +66,9 @@
 		gap: 1rem;
 		margin: 1rem 0rem 3rem 0rem;
 		padding: 4rem 0rem;
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 768px;
 	}
 	/* Extra small devices (phones, 600px and down) */
 	@media only screen and (max-width: 600px) {

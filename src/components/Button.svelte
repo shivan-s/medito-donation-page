@@ -1,8 +1,10 @@
 <script lang="ts">
 	export let directive: 'primary' | 'danger' | null = null;
+	export let loading = false;
 </script>
 
 <button
+	disabled={loading}
 	class:primary={directive === 'primary'}
 	class:danger={directive === 'danger'}
 	{...$$restProps}
@@ -33,7 +35,10 @@
 		filter: brightness(110%);
 		box-shadow: none;
 	}
-
+	button:disabled {
+		filter: brightness(110%) saturate(30%);
+		box-shadow: none;
+	}
 	button[type='submit'] {
 		align-self: end;
 	}
