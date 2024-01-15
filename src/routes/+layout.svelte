@@ -59,6 +59,10 @@
 		outline: 3px dotted var(--primary-text);
 	}
 
+	:global(p) {
+		font-size: 1.125rem;
+	}
+
 	main {
 		display: flex;
 		flex-direction: column;

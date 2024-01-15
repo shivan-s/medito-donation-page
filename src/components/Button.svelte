@@ -39,7 +39,4 @@
 		filter: brightness(110%) saturate(30%);
 		box-shadow: none;
 	}
-	button[type='submit'] {
-		align-self: end;
-	}
 </style>

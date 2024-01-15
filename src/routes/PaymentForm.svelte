@@ -13,7 +13,10 @@
 			throw error(500);
 		}
 		const elements = stripe.elements({
-			appearance: { theme: 'stripe' },
+			appearance: {
+				theme: 'stripe',
+				variables: { colorPrimary: '#72CA97', fontFamily: 'Inter, Helvetica, sans-serif' }
+			},
 			clientSecret
 		});
 		const paymentElement = elements.create('payment', { layout: 'tabs' });
@@ -24,6 +27,6 @@
 <form id="payment-form">
 	<Stack>
 		<div id="payment-element" />
-		<Button type="submit" directive="primary" id="submit">Pay now</Button>
+		<Button type="submit" directive="primary" id="submit">Send Money</Button>
 	</Stack>
 </form>

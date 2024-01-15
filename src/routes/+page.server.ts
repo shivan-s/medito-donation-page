@@ -14,6 +14,10 @@ const AnotherQuestionSchema = z.object({
 });
 
 const PaymentIntentSchema = z.object({
+	name: z
+		.string()
+		.max(50, { message: 'Name is too long. Must be less than 50 characters' })
+		.optional(),
 	amount: z
 		.number({ required_error: 'Amount is required.' })
 		.min(1, { message: 'Amount is too low.' })
@@ -32,6 +36,11 @@ export const load: PageServerLoad = async () => {
 	const title = 'Title';
 	const description =
 		'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.';
+
+	const goal = 2000.5;
+	const progress = 1000.222;
+	const donationCount = 100;
+
 	const questionAnswers: { question: string; answer: string }[] = [
 		{
 			question: 'Q1 Lorem ipsum dolor sit?',
@@ -49,7 +58,7 @@ export const load: PageServerLoad = async () => {
 		{ name: 'British Pound', code: 'gbp', flag: '\u{1F1EC}\u{1F1E7}', symbol: '£' },
 		{ name: 'Indian Rupee', code: 'inr', flag: '\u{1F1EE}\u{1F1F3}', symbol: '₹' },
 		{ name: 'Euro', code: 'eur', flag: '\u{1F1EA}\u{1F1FA}', symbol: '€' },
-		{ name: 'Australian Dollars', code: 'aud', flag: '\u{1F1E6}\u{1F1FA}', symbol: '$' },
+		{ name: 'Australian Dollar', code: 'aud', flag: '\u{1F1E6}\u{1F1FA}', symbol: '$' },
 		{ name: 'Canadian Dollar', code: 'cad', flag: '\u{1F1E8}\u{1F1E6}', symbol: 'C$' }
 	];
 	const paymentIntentForm = await superValidate(PaymentIntentSchema);
@@ -57,6 +66,10 @@ export const load: PageServerLoad = async () => {
 	return {
 		title,
 		description,
+
+		goal,
+		progress,
+		donationCount,
 
 		questionAnswers,
 		anotherQuestionForm,

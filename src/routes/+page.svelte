@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
 	import Alert from '$components/Alert.svelte';
 	import Button from '$components/Button.svelte';
 	import H1 from '$components/H1.svelte';
@@ -13,6 +12,9 @@
 	import type { PageData, ActionData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import PaymentForm from './PaymentForm.svelte';
+	import Progress from '$components/Progress.svelte';
+	import { currencyFormatter } from '$lib/client';
+	import HStack from '$components/HStack.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -37,11 +39,18 @@
 <p>
 	{data.description}
 </p>
-<LinkButton directive="primary" href="#donate">Donate</LinkButton>
+<LinkButton title="Click to donate" directive="primary" href="#donate">Donate</LinkButton>
 <section>
-	<H2 id="progress">Progress</H2>
-	TODO
-	<progress value="50" />
+	<H2 id="progress">
+		Donation Goal - <span class="progress">{currencyFormatter.format(data.goal)}</span>
+	</H2>
+	<Stack>
+		<Progress title="Click to donate" href="#donate" progress={(data.progress / data.goal) * 100} />
+		<p>
+			So far <strong>{data.donationCount}</strong> individuals have donated
+			<span class="progress">{currencyFormatter.format(data.progress)}</span>.
+		</p>
+	</Stack>
 </section>
 <section>
 	<H2 id="q-and-a">Q & A</H2>
@@ -104,7 +113,7 @@
 </section>
 <section>
 	<H2 id="donate">Donate</H2>
-	{#if !form?.paymentIntentForm}
+	<Stack>
 		<form
 			method="POST"
 			action="?/paymentIntent"
@@ -117,25 +126,56 @@
 			}}
 		>
 			<Stack>
-				<Select name="currency" value={$paymentIntentForm.currency} label="Currency"
-					>{#each data.currencies as currency}
-						<option value={currency.code}
-							>{currency.flag}
-							{currency.symbol}
-							{currency.name}</option
-						>
-					{/each}</Select
-				><Input
-					name="amount"
-					value={$paymentIntentForm.amount}
-					error={form?.paymentIntentForm?.errors.amount}
-					{...$paymentIntentConstraints.amount}
-					label="Amount"
-				/>
-				<Button loading={paymentIntentLoading} type="submit" directive="primary">Donate</Button>
+				<p>Select currency and amount to domate</p>
+				<Input
+					name="name"
+					disabled={form?.paymentIntentForm}
+					value={$paymentIntentForm.name}
+					error={form?.paymentIntentForm?.errors.name}
+					{...$paymentIntentConstraints.name}
+					label="Name"
+					placeholder="Name (optional)">Name</Input
+				>
+				<HStack>
+					<Select
+						disabled={form?.paymentIntentForm}
+						name="currency"
+						value={$paymentIntentForm.currency}
+						label="Currency"
+						>{#each data.currencies as currency}
+							<option title={currency.name} value={currency.code}
+								>{currency.flag}
+								{currency.symbol}
+								{currency.code.toUpperCase()}</option
+							>
+						{/each}</Select
+					><Input
+						name="amount"
+						disabled={form?.paymentIntentForm}
+						value={$paymentIntentForm.amount}
+						error={form?.paymentIntentForm?.errors.amount}
+						{...$paymentIntentConstraints.amount}
+						label="Amount"
+					/>
+				</HStack>
+				<Button
+					title="Proceed to payment method"
+					disabled={form?.paymentIntentForm}
+					loading={paymentIntentLoading}
+					type="submit"
+					directive="primary">Donate</Button
+				>
 			</Stack>
 		</form>
-	{:else if form.paymentIntentForm.valid}
-		<PaymentForm clientSecret={form.clientSecret ?? ''} />
-	{/if}
+		{#if form?.paymentIntentForm?.valid}
+			<PaymentForm clientSecret={form.clientSecret ?? ''} />
+		{/if}</Stack
+	>
 </section>
+
+<style>
+	.progress {
+		font-weight: bold;
+		color: var(--primary);
+	}
+</style>
