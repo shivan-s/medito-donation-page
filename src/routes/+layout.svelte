@@ -3,6 +3,7 @@
 	import { cubicInOut } from 'svelte/easing';
 	import type { LayoutData } from './$types';
 	import { fade } from 'svelte/transition';
+	import Navbar from '$components/Navbar.svelte';
 
 	const title = $page.data['title'];
 	export let data: LayoutData;
@@ -24,7 +25,7 @@
 	/>
 	<script src="https://js.stripe.com/v3/"></script>
 </svelte:head>
-<header />
+<header><Navbar /></header>
 {#key data.routeURL}
 	<main in:fade={{ easing: cubicInOut }}>
 		<slot />
@@ -73,8 +74,8 @@
 		flex-direction: column;
 		flex-grow: 1;
 		gap: 1rem;
-		margin: 1rem 0rem 3rem 0rem;
-		padding: 4rem 0rem;
+		margin: 0.25rem 0rem 3rem 0rem;
+		padding: 2rem 0rem;
 		margin-right: auto;
 		margin-left: auto;
 		max-width: 768px;

@@ -41,10 +41,12 @@
 	const goldMedal = '\u{1F947}';
 </script>
 
-<H1 id="title">{data.title}</H1>
-<p>
-	{data.description}
-</p>
+<section>
+	<H1 id="title">{data.title}</H1>
+	<p>
+		{data.description}
+	</p>
+</section>
 <LinkButton title="Click to donate" directive="primary" href="#donate">Donate</LinkButton>
 <section>
 	<H2 id="progress">
