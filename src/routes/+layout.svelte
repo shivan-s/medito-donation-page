@@ -63,6 +63,11 @@
 		font-size: 1.125rem;
 	}
 
+	:global(ul) {
+		padding-left: 1rem;
+		list-style-position: inside;
+	}
+
 	main {
 		display: flex;
 		flex-direction: column;

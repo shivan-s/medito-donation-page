@@ -20,8 +20,7 @@ const PaymentIntentSchema = z.object({
 		.optional(),
 	amount: z
 		.number({ required_error: 'Amount is required.' })
-		.min(1, { message: 'Amount is too low.' })
-		.default(10),
+		.min(1, { message: 'Amount is too low.' }),
 	currency: z.union([
 		z.literal('usd'),
 		z.literal('gbp'),
