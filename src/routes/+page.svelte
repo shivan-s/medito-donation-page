@@ -135,28 +135,26 @@
 					<p>
 						Select currency and amount to donate. A certain amount gives a reward as shown below.
 					</p>
-					<Box id="rewards">
-						<Stack>
-							<span>
-								<H3>{'\u{1F947}'} Gold Tier</H3>
-								<ul>
-									<li title="USD equivalent">Over $100 donated</li>
-								</ul>
-							</span>
-							<span>
-								<H3>{'\u{1F948}'} Silver Tier</H3>
-								<ul>
-									<li title="USD equivalent">Over $50 donated</li>
-								</ul>
-							</span>
-							<span>
-								<H3>{'\u{1F949}'} Bronze Tier</H3>
-								<ul>
-									<li title="USD equivalent">Over $10 donated</li>
-								</ul>
-							</span>
-						</Stack>
-					</Box>
+					<HStack>
+						<Box>
+							<H3>{'\u{1F947}'} Gold Tier</H3>
+							<ul>
+								<li title="USD equivalent">Over $100 donated</li>
+							</ul>
+						</Box>
+						<Box>
+							<H3>{'\u{1F948}'} Silver Tier</H3>
+							<ul>
+								<li title="USD equivalent">Over $50 donated</li>
+							</ul>
+						</Box>
+						<Box>
+							<H3>{'\u{1F949}'} Bronze Tier</H3>
+							<ul>
+								<li title="USD equivalent">Over $10 donated</li>
+							</ul>
+						</Box>
+					</HStack>
 					<Input
 						name="name"
 						disabled={form?.paymentIntentForm?.valid}

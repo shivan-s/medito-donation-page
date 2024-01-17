@@ -1,39 +1,44 @@
 <script lang="ts">
 	import Box from '$components/Box.svelte';
 	import { onMount } from 'svelte';
-	let recentDonations: {
+	import { currencyFormatter } from '$lib/client';
+
+	let recentDonation: {
 		name?: string;
 		amount: number;
 		symbol: string;
 		currency: string;
-	}[] = [];
+	} | null = null;
 
 	onMount(() => {
-		const delay = 2000;
+		const delay = 4000;
 		const interval = setInterval(() => {
-			addDonations();
+			newDonation();
 		}, delay);
 		return () => clearInterval(interval);
 	});
 
-	function addDonations() {
-		const recentDonation = {
+	function newDonation() {
+		recentDonation = {
 			symbol: '$',
 			currency: 'usd',
 			amount: Math.floor(Math.random() * 1000) + 10
 		};
-		recentDonations = [recentDonation, ...recentDonations];
 	}
 </script>
 
 <nav>
-	<Box directive="secondary" title="Recent donations"><b>Recent</b></Box>
-	{#each recentDonations as donation}
-		<Box disappear={true} delay={6000}
-			><strong>{donation.name ?? 'Anonymous'}</strong> sent
-			<strong>{donation.symbol}{donation.amount} {donation.currency.toUpperCase()}</strong>
+	{#if recentDonation}
+		<Box
+			><strong>{recentDonation.name ?? 'Anonymous'}</strong> recently donated
+			<strong
+				>{currencyFormatter.format(recentDonation.amount)}
+				{recentDonation.currency.toUpperCase()}</strong
+			>
 		</Box>
-	{/each}
+	{:else}
+		<Box>Recent Donations</Box>
+	{/if}
 </nav>
 
 <style>
