@@ -21,9 +21,6 @@
 	export let data: PageData;
 	export let form: ActionData;
 
-	console.log('data', data);
-	console.log('form', form);
-
 	$: questionAnswersIdx = -1;
 	const { form: anotherQuestionForm, constraints: anotherQuestionConstraints } = superForm(
 		data.anotherQuestionForm
@@ -38,22 +35,24 @@
 </script>
 
 <section>
-	<H1 id="title">{data.title}</H1>
-	<p>
-		{data.description}
-	</p>
+	<Stack>
+		<H1 id="title">{data.title}</H1>
+		<LinkButton title="Click to donate" directive="primary" href="#donate">Donate</LinkButton>
+		<p>
+			{data.description}
+		</p>
+	</Stack>
 </section>
-<LinkButton title="Click to donate" directive="primary" href="#donate">Donate</LinkButton>
 <section>
 	<H2 id="progress">
-		Donation Goal: <span class="emphasis">{currencyFormatter.format(data.goal)}</span>
+		Donation Goal: <strong>{currencyFormatter.format(data.goal)}</strong>
 	</H2>
 	<Stack>
 		<Progress title="Click to donate" href="#donate" progress={(data.progress / data.goal) * 100} />
 		<p>
 			So far <strong>{data.donationCount}</strong> individuals have donated
-			<span class="emphasis">{currencyFormatter.format(data.progress)}</span> (<span
-				class="emphasis">{((data.progress / data.goal) * 100).toFixed(0)}%<span></span></span
+			<strong>{currencyFormatter.format(data.progress)}</strong> (<strong
+				>{((data.progress / data.goal) * 100).toFixed(0)}%</strong
 			>).
 		</p>
 	</Stack>
@@ -198,9 +197,9 @@
 				{:else if form?.paymentIntentForm?.valid}
 					<Box>
 						<strong>{form.paymentIntentForm.data.name ?? 'Anonymous'}</strong> donates
-						<span class="emphasis"
+						<strong
 							>{data.currencies.filter((c) => c.code === form?.paymentIntentForm?.data.currency)[0]
-								.symbol}{form.paymentIntentForm.data.amount}</span
+								.symbol}{form.paymentIntentForm.data.amount}</strong
 						>
 						{form.paymentIntentForm.data.currency.toUpperCase()}!
 					</Box>
@@ -212,10 +211,3 @@
 		{/if}</Stack
 	>
 </section>
-
-<style>
-	.emphasis {
-		font-weight: bold;
-		color: var(--primary);
-	}
-</style>

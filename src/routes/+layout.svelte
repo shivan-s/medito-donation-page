@@ -70,6 +70,14 @@
 		padding-left: 1rem;
 		list-style-position: inside;
 	}
+	:global(section) {
+		margin-top: 1rem;
+	}
+
+	header {
+		top: 0;
+		position: sticky;
+	}
 
 	main {
 		display: flex;

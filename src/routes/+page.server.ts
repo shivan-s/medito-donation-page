@@ -32,6 +32,7 @@ const PaymentIntentSchema = z.object({
 });
 
 export const load: PageServerLoad = async () => {
+	// NOTE: title and description can be set here
 	const title = 'Title';
 	const description =
 		'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.';
@@ -40,6 +41,7 @@ export const load: PageServerLoad = async () => {
 	const progress = 1000.222;
 	const donationCount = 100;
 
+	// NOTE: questions and answers can be set here
 	const questionAnswers: { question: string; answer: string }[] = [
 		{
 			question: 'Q1 Lorem ipsum dolor sit?',

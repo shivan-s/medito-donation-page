@@ -17,7 +17,7 @@
 </script>
 
 {#if show}
-	<div in:fade={{ easing: cubicIn }} out:fade={{ easing: cubicOut }} class="wrapper">
+	<div in:fade={{ easing: cubicIn, duration: 0.5 }} out:fade={{ easing: cubicOut }} class="wrapper">
 		<div
 			class="box"
 			class:primary={directive === 'primary'}
@@ -37,6 +37,7 @@
 		justify-content: center;
 	}
 	.box {
+		background-color: hsla(0, 0%, 100%, 0.8);
 		display: flex;
 		justify-content: center;
 		width: max-content;
