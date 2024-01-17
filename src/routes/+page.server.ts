@@ -33,13 +33,13 @@ const PaymentIntentSchema = z.object({
 
 export const load: PageServerLoad = async () => {
 	// NOTE: title and description can be set here
-	const title = 'Title';
+	const title = 'Random Title Here';
 	const description =
 		'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.';
 
-	const goal = 2000.5;
-	const progress = 1000.222;
-	const donationCount = 100;
+	const goal = 4000;
+	const progress = 3000;
+	const donationCount = 200;
 
 	// NOTE: questions and answers can be set here
 	const questionAnswers: { question: string; answer: string }[] = [
@@ -50,6 +50,10 @@ export const load: PageServerLoad = async () => {
 		{
 			question: 'Q2 Lorem ipsum dolor?',
 			answer: 'Answer 2'
+		},
+		{
+			question: 'Q3 Lorem ipsum?',
+			answer: 'Answer 3'
 		}
 	];
 	const anotherQuestionForm = await superValidate(AnotherQuestionSchema);

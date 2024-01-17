@@ -138,7 +138,7 @@
 					<Box id="rewards">
 						<Stack>
 							<span>
-								<H3>{'\u{1F949}'} Gold Tier</H3>
+								<H3>{'\u{1F947}'} Gold Tier</H3>
 								<ul>
 									<li title="USD equivalent">Over $100 donated</li>
 								</ul>
@@ -150,7 +150,7 @@
 								</ul>
 							</span>
 							<span>
-								<H3>{'\u{1F947}'} Bronze Tier</H3>
+								<H3>{'\u{1F949}'} Bronze Tier</H3>
 								<ul>
 									<li title="USD equivalent">Over $10 donated</li>
 								</ul>
