@@ -57,13 +57,15 @@
 		background-color: var(--primary-background);
 	}
 	:global(:target) {
-		outline: 3px dotted var(--primary-text);
+		outline: 3px dotted var(--primary);
 	}
-
+	:global(strong) {
+		font-weight: bold;
+		color: var(--primary);
+	}
 	:global(p) {
 		font-size: 1.125rem;
 	}
-
 	:global(ul) {
 		padding-left: 1rem;
 		list-style-position: inside;

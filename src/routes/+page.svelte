@@ -35,10 +35,6 @@
 	);
 
 	$: paymentIntentLoading = false;
-
-	const bronzeMedal = '\u{1F949}';
-	const silverMedal = '\u{1F948}';
-	const goldMedal = '\u{1F947}';
 </script>
 
 <section>
@@ -143,19 +139,19 @@
 					<Box id="rewards">
 						<Stack>
 							<span>
-								<H3>{goldMedal} Gold Tier</H3>
+								<H3>{'\u{1F949}'} Gold Tier</H3>
 								<ul>
 									<li title="USD equivalent">Over $100 donated</li>
 								</ul>
 							</span>
 							<span>
-								<H3>{silverMedal} Silver Tier</H3>
+								<H3>{'\u{1F948}'} Silver Tier</H3>
 								<ul>
 									<li title="USD equivalent">Over $50 donated</li>
 								</ul>
 							</span>
 							<span>
-								<H3>{bronzeMedal} Bronze Tier</H3>
+								<H3>{'\u{1F947}'} Bronze Tier</H3>
 								<ul>
 									<li title="USD equivalent">Over $10 donated</li>
 								</ul>
